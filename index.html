@@ -12,9 +12,7 @@
         background: linear-gradient(135deg, #ffd6e7, #fff);
     }
 
-    h1 {
-        font-size: 60px;
-        animation: muncul 2s ease-out;
+    h1 {animation: muncul 2s ease-out, floating 4s ease-in-out infinite;
     }
 
     p {
@@ -42,8 +40,46 @@
             transform: translateY(0);
         }
     }
-</style>
-    
+
+    @keyframes floating {
+        0%, 100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-8px);
+        }
+}
+   .glitter {
+    position: fixed;
+    top: -20px;
+    color: white;
+    pointer-events: none;
+    z-index: 0;
+    animation: glitterJatuh linear forwards;
+    text-shadow: 0 0 8px white, 0 0 15px #ffb6d5;
+}
+
+@keyframes glitterJatuh {
+    0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+ }
+    </style>
 </head>
 
 <body>
@@ -55,7 +91,7 @@
 gua seneng banget lu pernah hadir di hidup gua, ngisi salah satu bagian dari cerita hidup gua. Banyak banget hal yang gua dapet dari lu, banyak pelajaran yang mungkin baru gua sadarin sekarang.
 
 makasih ya, taca, udah mau ngadepin orang kaya gua. 
-yang uda bikin lu sakit hati, tapi tetep buat ngadepin orang kaya gua.
+yang udah bikin lu sakit hati, tapi tetep buat ngadepin orang kaya gua.
 
 gua juga sering banget ngadu ke Tuhan tentang lu. tentang lu, tentang kita, tentang hal' yang gua rasain tapi ngga tau harus gua ceritain ke siapa. Kadang gua cuma bisa ngomong sama Tuhan, berharap semuanya bisa baik-baik aja.
 
@@ -75,7 +111,27 @@ Semoga hidup selalu baik' aja ya... 🤍. </p>
 
 
     <audio controls>
-        <source src="yasuko-melting-snow-203401.mp3" type="audio/mpeg">
+        <source src="yasuko-melting-snow-203401.mp3" type="audio/mpeg"
+</audio>
 
+<script>
+function createGlitter() {
+    const glitter = document.createElement("span");
+
+    glitter.className = "glitter";
+    glitter.innerHTML = "✦";
+
+    glitter.style.left = Math.random() * 100 + "vw";
+    glitter.style.animationDuration = (3 + Math.random() * 4) + "s";
+    glitter.style.fontSize = (8 + Math.random() * 12) + "px";
+    document.body.appendChild(glitter);
+
+    setTimeout(function() {
+        glitter.remove();
+    }, 8000);
+}
+
+setInterval(createGlitter, 250);
+</script>
 </body>
 </html>
